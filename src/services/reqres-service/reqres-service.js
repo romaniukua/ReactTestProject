@@ -9,4 +9,17 @@ export default class ReqresService {
 
         return await res.json();
     }
+
+    async deleteUser(url) {
+        await fetch(`${this._apiBase}${url}`, {
+            method: 'DELETE'
+        });
+    }
+
+    async updateUser(url, data) {
+        await fetch(`${this._apiBase}${url}`, {
+            method: 'PUT',
+            body: JSON.stringify(data)
+        });
+    }
 }

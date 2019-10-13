@@ -43,6 +43,7 @@ class App extends Component {
       };
 
     });
+    this.service.deleteUser(`/users/${id}`);
   }
 
   findUserProps = (id) => {
@@ -54,9 +55,9 @@ class App extends Component {
   }
 
   saveUserDetails = (user) => {
-    const { requaredItem } = this.state;
+    const { requaredItem, usersList } = this.state;
+    const {id} = usersList[requaredItem];
     this.setState(({usersList}) => {
-      const {id} = usersList[requaredItem];
       const newItem = {
         id,
         ...user
@@ -71,6 +72,7 @@ class App extends Component {
         usersList: newArray
       };
     });
+    this.service.updateUser(`/users/${id}`, user);
   }
 
   render() {
